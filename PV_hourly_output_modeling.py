@@ -10,8 +10,8 @@ lat, lon = 34.05, -118.25   # Example: Los Angeles, CA
 # lat, lon = 42.3555, -71.0565  # Example: Boston, MA
 
 year = 2022
-api_key = 'EtWdLrJWOZSQuYaLhuGCl8dlYc6UUBqM0YjWlVEo'  # Replace with your actual API key
-email = 'dharik.mallapragada@nyu.edu'  # Replace with your actual email
+api_key = 'XXXXXXXXXX'  # Replace with your actual API key
+email = 'XXXXX@XXXX.edu'  # Replace with your actual email
 # 2. Download NSRDB data for the particular location
 data, meta = get_psm3(latitude=lat, longitude=lon, names=str(year), api_key=api_key, email=email, map_variables=True)
 
