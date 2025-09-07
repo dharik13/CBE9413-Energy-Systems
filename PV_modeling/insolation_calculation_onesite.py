@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 lat, lon = 34.05, -118.25   # Example: Los Angeles, CA
 
 year = 2022
-api_key = 'EtWdLrJWOZSQuYaLhuGCl8dlYc6UUBqM0YjWlVEo'  # Replace with your actual API key
-email = 'dharik.mallapragada@nyu.edu'  # Replace with your actual email
+api_key = 'XXXXXXXX'  # Replace with your actual API key
+email = 'XXXXXX@nyu.edu'  # Replace with your actual email
 # 2. Download NSRDB data
 data, meta = get_psm3(latitude=lat, longitude=lon, names=str(year), api_key=api_key, email=email, map_variables=True)
 
