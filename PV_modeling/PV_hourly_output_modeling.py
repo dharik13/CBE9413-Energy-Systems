@@ -38,9 +38,8 @@ inverter_nom_loss = 0.04  # Inverter nominal loss (4%)
 module_params = {'pdc0': module_power, 'gamma_pdc': -0.004}
 SystemCapacityDC = module_power * modules_per_string * strings_per_inverter # DC capacity handled by each inverter (W)
 inverter_params = {
-        'pdc0': SystemCapacityDC,
-        'pdc': SystemCapacityDC / dc_ac_ratio,
-        'eta_inv_nominal': 1 - inverter_nom_loss
+        'pdc0': SystemCapacityDC/dc_ac_ratio, # PVWatts for max AC capacity
+        'eta_inv_nom': 1 - inverter_nom_loss
     }
 
 # system losses parameters (percent units)
@@ -63,16 +62,16 @@ losses = {
 # Specifying type of mounting - fixed tilt or single axis tracking
 # NOTE: COMMENT ONE OF THE MOUNT DEFINITION FUNCTIONS
 ## Fixed tilt system definition:
-# mount = FixedMount(surface_tilt=surface_tilt,
-#                     surface_azimuth=180)
+mount = FixedMount(surface_tilt=surface_tilt,
+                    surface_azimuth=180)
 ## Single axis tracking system definition:
-mount = SingleAxisTrackerMount(
-        axis_tilt=surface_tilt,
-        axis_azimuth=azimuth_angle,   # Assuming south-facing axis
-        backtrack=True,     # Enable backtracking for the tracker
-        gcr=0.33,  # Ground coverage ratio
-        max_angle=60.0,      # Maximum angle for backtracking
-)
+# mount = SingleAxisTrackerMount(
+#         axis_tilt=surface_tilt,
+#         axis_azimuth=azimuth_angle,   # Assuming south-facing axis
+#         backtrack=True,     # Enable backtracking for the tracker
+#         gcr=0.33,  # Ground coverage ratio
+#         max_angle=60.0,      # Maximum angle for backtracking
+# )
 
 # Define the PV array function using the specified mount
 array = Array(
@@ -123,6 +122,7 @@ print("SystemCapacityDC:", SystemCapacityDC/1e+6)
 print("Number of Systems:", NumberofSystems)
 print("max(ac_output):", max(ac_output))
 print("max(dc_output):", max(dc_output))
+print("sum(ac_output):", sum(ac_output))
 print("AC Capacity Factor:", annual_ac_CF)
 print("DC Capacity Factor:", annual_dc_CF)
 output_df.to_csv('pv_output_hourly.csv')
