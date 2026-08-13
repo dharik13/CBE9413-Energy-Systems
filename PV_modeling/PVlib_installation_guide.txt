@@ -19,13 +19,13 @@ conda install -c conda-forge pvlib, pandas, matplotlib
 pip install pvanalytics
 
 3. Get Your NREL API Key
-- Visit: https://developer.nrel.gov/signup/
+- Visit: developer.nlr.gov/signup/ 
 - Sign up --> Confirm email ---> Copy your API key
 
 4.  Configure your system using the provided code
 Decide on 
 * Latitude & longitude
 * Tilt and azimuth of the array
-* Year of interest (NSRDB supports hourly data for ~1998–2022)
+* Year of interest (NSRDB supports hourly data for ~1998â€“2022)
 * Module and inverter parameters
 
