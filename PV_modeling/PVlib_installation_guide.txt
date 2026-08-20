@@ -4,7 +4,7 @@ PV lib installation instructions
 # get the package from the conda-forge conda channel
 # strongly recommend installing in a separate conda env as shown below
 # note: both "pvlib" and "pvlib-python" work on conda-forge
-conda create -n pvlib python=3.10 -y
+conda create -n pvlib python=3.14 -y
 
 conda activate pvlib
 
@@ -13,16 +13,11 @@ conda install -c conda-forge pvlib, pandas, matplotlib
 
 
 
-
-2. Install PVanalytics package neeed to access National Solar Radiation DataBase
-
-pip install pvanalytics
-
-3. Get Your NREL API Key
+2. Get Your NREL API Key
 - Visit: developer.nlr.gov/signup/ 
 - Sign up --> Confirm email ---> Copy your API key
 
-4.  Configure your system using the provided code
+3.  Configure your system using the provided code
 Decide on 
 * Latitude & longitude
 * Tilt and azimuth of the array
