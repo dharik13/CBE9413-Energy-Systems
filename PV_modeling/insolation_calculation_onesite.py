@@ -13,9 +13,10 @@ lat, lon = 34.05, -118.25   # Example: Los Angeles, CA
 year = 2022
 api_key = 'XXXXXXXX'  # Replace with your actual API key
 email = 'XXXXXX@nyu.edu'  # Replace with your actual email
-# 2. Download NSRDB data
-data, meta = get_psm3(latitude=lat, longitude=lon, names=str(year), api_key=api_key, email=email, map_variables=True)
 
+# 2. Download NSRDB data
+data, meta = get_nsrdb_psm4_conus(latitude=lat, longitude=lon, time_step=60, parameters=[],
+                                    year =year, api_key=api_key, email=email, map_variables=True)
 # 3. Localize to site's timezone
 data.index = data.index.tz_convert('America/Los_Angeles')
 
