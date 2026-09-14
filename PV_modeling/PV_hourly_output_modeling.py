@@ -43,8 +43,9 @@ PlantCapacityDC = 100 # System capacity (MW) of PV system in desired units
 surface_tilt = lat  # Surface tilt angle (degrees), can be set to latitude for fixed tilt systems
 azimuth_angle = 180.0  # Azimuth angle (degrees)
 module_power = 400  # Power rating of the module (W)
-modules_per_string = 1000  # Number of modules in series per string
-strings_per_inverter = 10  # Number of strings for each inverter
+# These are just placeholder values that dont impact calculations - the actual modules per string depends on delivered voltage and the strings per inverter will depend on inverter size available
+modules_per_string = 25  # Number of modules in series per string
+strings_per_inverter = 400  # Number of strings for each inverter
 dc_ac_ratio = 1.1  # DC to AC ratio, typically between 1.1 and 1.5
 inverter_nom_loss = 0.04  # Inverter nominal loss (4%)
 module_params = {'pdc0': module_power, 
