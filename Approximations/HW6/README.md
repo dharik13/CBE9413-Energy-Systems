@@ -1,14 +1,24 @@
 # HW6 - Julia Project Environment
 
-This directory contains a Julia project with all necessary dependencies for running the optimization and machine learning problems in Q2(a), Q2(b), and Q2(c).
+This directory contains the data files, example code and Julia project environment for HW6:
+- **Question 1** - Neural network surrogates and a triangle-based piecewise linear approximation of a heat pump with a hot water tank (parts A-D)
+- **Question 2** - Piece-wise McCormick envelopes for a district heating system (parts A-C)
+
+## Files
+
+- **hp_tank_data.csv** - Hourly electricity price ($/MWh) and heat demand (MW) for one day, 24 hours (Q1)
+- **ML_example.jl** - Example of training a neural network with Flux. Follow its structure for Q1 A
+- **heat_demand_MW.csv** - Hourly heat demand (MW) for one week, 168 hours (Q2 C)
+- **Project.toml** - Lists the project dependencies and their compatible versions
+- **Manifest.toml** - Complete dependency tree with exact versions (auto-generated)
 
 ## Dependencies
 
 The project uses the following Julia packages:
-- **Flux** - Deep learning framework for neural network training (Q2a)
-- **JuMP** - Mathematical optimization modeling (Q2b, Q2c)
-- **Gurobi** - Commercial optimization solver
-- **CSV & DataFrames** - Data handling (Q2b, Q2c)
+- **Flux** - Deep learning framework for training the neural network surrogates (Q1 A)
+- **JuMP** - Mathematical optimization modeling (Q1 B-C, Q2 C)
+- **Gurobi** - Commercial optimization solver (Q1 B-C, Q2 C)
+- **CSV & DataFrames** - Reading the data files (Q1, Q2 C)
 - **Plots** - Visualization
 - **PrettyTables** - Nice table formatting
 - **Statistics & Random** - Standard library utilities
@@ -16,7 +26,7 @@ The project uses the following Julia packages:
 ## Setup Instructions
 
 ### 1. Install Julia
-Make sure you have Julia 1.9 or later installed. Download from [julialang.org](https://julialang.org/downloads/).
+Install Julia 1.11 from [julialang.org](https://julialang.org/downloads/). The `Manifest.toml` was generated with Julia 1.11.6.
 
 ### 2. Install Gurobi
 You need a Gurobi license (free academic license available at [gurobi.com](https://www.gurobi.com/academia/academic-program-and-licenses/)).
@@ -35,18 +45,15 @@ This will automatically install all required packages as specified in `Project.t
 
 ### 4. Run the Scripts
 
-Once the environment is set up, you can run any of the scripts:
+Once the environment is set up, activate it at the start of each session and run the example or your own script:
 
 ```julia
 # Make sure you're in the project environment
 using Pkg
 Pkg.activate(".")
 
-
-## Files
-
-- **Project.toml** - Lists the project dependencies and their compatible versions
-- **Manifest.toml** - Complete dependency tree with exact versions (auto-generated)
+include("ML_example.jl")
+```
 
 ## Reproducibility
 
@@ -58,9 +65,10 @@ If you encounter issues:
 
 1. **Gurobi not found**: Make sure you have a valid Gurobi license and it's properly configured
    ```julia
-   using Gurobi
    ENV["GUROBI_HOME"] = "/path/to/gurobi"
+   using Pkg
    Pkg.build("Gurobi")
+   using Gurobi
    ```
 
 2. **Package conflicts**: Remove the Manifest.toml and regenerate it
@@ -80,8 +88,8 @@ If you encounter issues:
 
 ## Package Versions
 
-This project was last tested with:
-- Julia 1.11.0
+The `Manifest.toml` pins:
+- Julia 1.11.6
 - Flux 0.14.25
 - JuMP 1.29.2
 - Gurobi 1.7.6
